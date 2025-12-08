@@ -24,19 +24,20 @@ Copy files and directories between your local machine and a remote server in you
 ### Upload a file to a remote server
 ```yaml
 - name: Upload File
-  uses: alpacax/alpacon-cp-action@v1
+  uses: alpacax/alpacon-cp-action@v1.0.1
   with:
     workspace-url: ${{ secrets.ALPACON_WORKSPACE_URL }}
     api-token: ${{ secrets.ALPACON_API_TOKEN }}
     source: './data/file.txt'
     target-server: 'worker1'
     target-path: '/data/file.txt'
+    username: ubuntu
 ```
 
 ### Download a file from a remote server
 ```yaml
 - name: Download File
-  uses: alpacax/alpacon-cp-action@v1
+  uses: alpacax/alpacon-cp-action@v1.0.1
   with:
     workspace-url: ${{ secrets.ALPACON_WORKSPACE_URL }}
     api-token: ${{ secrets.ALPACON_API_TOKEN }}
@@ -44,12 +45,13 @@ Copy files and directories between your local machine and a remote server in you
     target-server: 'worker1'
     target-path: './data/'  # Directory path - file will be saved as './data/file.txt'
     mode: download
+    username: ubuntu
 ```
 
 ### Upload a directory recursively
 ```yaml
 - name: Upload Directory
-  uses: alpacax/alpacon-cp-action@v1
+  uses: alpacax/alpacon-cp-action@v1.0.1
   with:
     workspace-url: ${{ secrets.ALPACON_WORKSPACE_URL }}
     api-token: ${{ secrets.ALPACON_API_TOKEN }}
@@ -57,12 +59,13 @@ Copy files and directories between your local machine and a remote server in you
     target-server: 'worker1'
     target-path: '/data/'
     recursive: true
+    username: ubuntu
 ```
 
 ### Download a directory recursively
 ```yaml
 - name: Download Directory
-  uses: alpacax/alpacon-cp-action@v1
+  uses: alpacax/alpacon-cp-action@v1.0.1
   with:
     workspace-url: ${{ secrets.ALPACON_WORKSPACE_URL }}
     api-token: ${{ secrets.ALPACON_API_TOKEN }}
@@ -71,6 +74,7 @@ Copy files and directories between your local machine and a remote server in you
     target-path: './data/'
     mode: download
     recursive: true
+    username: ubuntu
 ```
 
 ## Inputs

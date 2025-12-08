@@ -30,6 +30,12 @@ inputs:
     description: 'Set to true to copy directories recursively (-r option).'
     required: false
     default: 'false'
+  username:
+    description: 'Username to execute the command as (e.g., root, ubuntu).'
+    required: false
+  groupname:
+    description: 'Group name to execute the command as.'
+    required: false
 
 runs:
   using: "composite"
@@ -39,10 +45,23 @@ runs:
       shell: bash
     - name: Execute CP
       run: |
+        # Validate groupname requires username
+        if [[ -z "${{ inputs.username }}" && -n "${{ inputs.groupname }}" ]]; then
+          echo "Error: groupname requires username to be specified"
+          exit 1
+        fi
+
+        # Build command with optional flags
         CP_CMD="alpacon cp"
         if [ "${{ inputs.recursive }}" = "true" ]; then
           CP_CMD="$CP_CMD -r"
         fi
+        if [[ -n "${{ inputs.username }}" && -n "${{ inputs.groupname }}" ]]; then
+          CP_CMD="$CP_CMD -u ${{ inputs.username }} -g ${{ inputs.groupname }}"
+        elif [[ -n "${{ inputs.username }}" ]]; then
+          CP_CMD="$CP_CMD -u ${{ inputs.username }}"
+        fi
+
         if [ "${{ inputs.mode }}" = "download" ]; then
           $CP_CMD ${{ inputs.target-server }}:${{ inputs.source }} ${{ inputs.target-path }}
         else
