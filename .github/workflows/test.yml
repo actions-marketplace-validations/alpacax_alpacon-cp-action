@@ -1,4 +1,6 @@
 name: Test Alpacon CP Action
+permissions:
+  contents: read
 
 on:
   push:
