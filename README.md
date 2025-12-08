@@ -97,6 +97,8 @@ This action requires the Alpacon CLI to be installed in your workflow. Use the [
 | target-path    | Destination path (remote for upload, local for download).                   | Yes      |
 | mode           | "upload" (default) or "download".                                         | No       |
 | recursive      | Set to true to copy directories recursively.                                | No       |
+| username       | Username for server authentication (optional).                              | No       |
+| groupname      | Group name for server authentication (optional).                            | No       |
 
 ## Notes
 
