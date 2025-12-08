@@ -18,6 +18,15 @@ Copy files and directories between your local machine and a remote server in you
 - **Upload target-path**: Can be either a specific file path or directory path.
 - **Recursive operations**: Use `recursive: true` for directory operations.
 
+## Prerequisites
+
+This action requires the Alpacon CLI to be installed in your workflow. Use the [Alpacon Setup Action](https://github.com/marketplace/actions/alpacon-setup-action) first:
+
+```yaml
+- name: Setup Alpacon CLI
+  uses: alpacax/alpacon-setup-action@v1.0.0
+```
+
 ## Usage examples
 
 
@@ -88,8 +97,6 @@ Copy files and directories between your local machine and a remote server in you
 | target-path    | Destination path (remote for upload, local for download).                   | Yes      |
 | mode           | "upload" (default) or "download".                                         | No       |
 | recursive      | Set to true to copy directories recursively.                                | No       |
-| username       | Username for server authentication (optional).                              | No       |
-| groupname      | Group name for server authentication (optional).                            | No       |
 
 ## Notes
 
