@@ -33,19 +33,20 @@ This action requires the Alpacon CLI to be installed in your workflow. Use the [
 ### Upload a file to a remote server
 ```yaml
 - name: Upload File
-  uses: alpacax/alpacon-cp-action@v1.0.0
+  uses: alpacax/alpacon-cp-action@v1.0.1
   with:
     workspace-url: ${{ secrets.ALPACON_WORKSPACE_URL }}
     api-token: ${{ secrets.ALPACON_API_TOKEN }}
     source: './data/file.txt'
     target-server: 'worker1'
     target-path: '/data/file.txt'
+    username: ubuntu
 ```
 
 ### Download a file from a remote server
 ```yaml
 - name: Download File
-  uses: alpacax/alpacon-cp-action@v1.0.0
+  uses: alpacax/alpacon-cp-action@v1.0.1
   with:
     workspace-url: ${{ secrets.ALPACON_WORKSPACE_URL }}
     api-token: ${{ secrets.ALPACON_API_TOKEN }}
@@ -53,12 +54,13 @@ This action requires the Alpacon CLI to be installed in your workflow. Use the [
     target-server: 'worker1'
     target-path: './data/'  # Directory path - file will be saved as './data/file.txt'
     mode: download
+    username: ubuntu
 ```
 
 ### Upload a directory recursively
 ```yaml
 - name: Upload Directory
-  uses: alpacax/alpacon-cp-action@v1.0.0
+  uses: alpacax/alpacon-cp-action@v1.0.1
   with:
     workspace-url: ${{ secrets.ALPACON_WORKSPACE_URL }}
     api-token: ${{ secrets.ALPACON_API_TOKEN }}
@@ -66,12 +68,13 @@ This action requires the Alpacon CLI to be installed in your workflow. Use the [
     target-server: 'worker1'
     target-path: '/data/'
     recursive: true
+    username: ubuntu
 ```
 
 ### Download a directory recursively
 ```yaml
 - name: Download Directory
-  uses: alpacax/alpacon-cp-action@v1.0.0
+  uses: alpacax/alpacon-cp-action@v1.0.1
   with:
     workspace-url: ${{ secrets.ALPACON_WORKSPACE_URL }}
     api-token: ${{ secrets.ALPACON_API_TOKEN }}
@@ -80,6 +83,7 @@ This action requires the Alpacon CLI to be installed in your workflow. Use the [
     target-path: './data/'
     mode: download
     recursive: true
+    username: ubuntu
 ```
 
 ## Inputs
@@ -93,6 +97,8 @@ This action requires the Alpacon CLI to be installed in your workflow. Use the [
 | target-path    | Destination path (remote for upload, local for download).                   | Yes      |
 | mode           | "upload" (default) or "download".                                         | No       |
 | recursive      | Set to true to copy directories recursively.                                | No       |
+| username       | Username for server authentication (optional).                              | No       |
+| groupname      | Group name for server authentication (optional).                            | No       |
 
 ## Notes
 
